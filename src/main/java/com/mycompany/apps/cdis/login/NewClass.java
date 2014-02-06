@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 stnetadmin.
+ * Copyright 2014 bigadmin.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,27 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mycompany.apps.ejbs;
-
-import javax.annotation.security.RolesAllowed;
-import javax.ejb.Stateless;
+package com.mycompany.apps.cdis.login;
 
 /**
- * ロールチェック用クラス
  *
- * @author stnetadmin
+ * @author bigadmin
  */
-@Stateless
-public class RoleCheckLogic {
-
-    @RolesAllowed("admin")
-    public String executableByAdmin() {
-        return "管理者による実行が可能なロジック";
-    }
-
-    @RolesAllowed("user")
-    public String executableByUser() {
-        return "ユーザによる実行が可能なロジック";
-    }
+public class NewClass {
 
 }
