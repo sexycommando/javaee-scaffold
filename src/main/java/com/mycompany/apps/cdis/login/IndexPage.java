@@ -76,9 +76,9 @@ public class IndexPage {
         ExternalContext externalContext = context.getExternalContext();
         HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
 
-//        String name = getUsername();
-//        String pass = getPassword();
-//        Logger.getLogger(IndexPage.class.getName()).log(Level.INFO, name + ":" + pass);
+        //String name = getUsername();
+        //String pass = getPassword();
+        //Logger.getLogger(IndexPage.class.getName()).log(Level.INFO, name + ":" + pass);
         try {
             request.login(getUsername(), getPassword());
             return "home.xhtml?faces-redirect=true";

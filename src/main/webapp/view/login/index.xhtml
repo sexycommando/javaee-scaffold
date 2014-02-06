@@ -2,12 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
 
     <h:head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title><h:outputText value="${resources.title}"/></title>
 
         <!-- basic styles -->
         <h:outputStylesheet name="bootstrap/css/bootstrap.min.css" />
@@ -21,26 +23,32 @@
         <h:outputScript library="bootstrap/js" name="respond.min.js" />
         <h:outputText value="&lt;![endif]--&gt;" escape="false" />
 
-        <title><h:outputText value="${resources.title}"/></title>
         <style type="text/css">
             .login{
                 margin: 100px;
             }
         </style>
+
+        <f:event type="preRenderView" listener="#{indexPage.onPageLoad()}"/>
+        <script>
+            window.onunload = function() {
+            };
+            history.forward();
+        </script>
     </h:head>
     <h:body>
         <div class="login">
-            <h:form>
+            <h:form id="loginFrm">
                 <div class="form-group">
-                    <label for="inputEmail">ログインID</label>
+                    <label for="username">ログインID</label>
                     <h:inputText id="userrname" value="#{indexPage.username}" class="form-control" required="true" p:placeholder="Login ID"/>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword">パスワード</label>
+                    <label for="password">パスワード</label>
                     <h:inputSecret onselect="true" id="password" value="#{indexPage.password}" class="form-control" required="true" p:placeholder="Password" />
                 </div>
-                <button type="submit" class="btn btn-primary">Login</button>
                 <h:commandButton id="loginBtn" action="#{indexPage.login()}" style="display: none"/>
+                <button type="submit" id="loginFrm.loginBtn" class="btn btn-primary" name="loginFrm:loginBtn">Login</button>
             </h:form>
         </div>
     </h:body>
